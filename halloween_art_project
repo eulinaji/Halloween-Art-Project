@@ -1,36 +1,44 @@
 import turtle as trtl
 import random as rand
 
+# pumpkin
 p = trtl.Turtle()
 
-'''
-#-----game configuration----
-pumpkin_color = "orange"
-pumpkin_shape = "circle"
-pumpkin_size = 2
-score = 0
-
-#-----initialize turtle-----
-p.fillcolor(pumpkin_color)
-p.shape(pumpkin_shape)
-p.shapesize(pumpkin_size)
-'''
-
-#-----game functions--------
 def pumpkin_clicked(x,y):
-    change_position()
+  pumpkin_change_position()
 
-def change_position():
-    x = rand.randint(-100,100)
-    y = rand.randint(-100,100)
-    p.penup()
-    p.hideturtle()
-    p.goto(x,y)
-    p.showturtle()
+def pumpkin_change_position():
+  x_value = rand.randint(-200,200)
+  y_value = rand.randint(-200,200)
+  p.penup()
+  p.hideturtle()
+  p.goto(x_value,y_value)
+  p.showturtle()
 
 wn = trtl.Screen()
-# p.onclick(pumpkin_clicked)
+
 wn.addshape('pumpkin.gif')
 p.shape('pumpkin.gif')
+
+p.onclick(pumpkin_clicked)
+
+
+# ghost
+g = trtl.Turtle()
+
+def ghost_clicked(x,y):
+  ghost_change_position(x,y)
+
+def ghost_change_position(x_value,y_value):
+  g.penup()
+  g.goto(x_value,y_value)
+
+wn = trtl.Screen()
+
+wn.addshape('ghost_1.gif')
+g.shape('ghost_1.gif')
+wn.onclick(ghost_clicked)
+
+wn. bgcolor("black")
 
 wn.mainloop()
