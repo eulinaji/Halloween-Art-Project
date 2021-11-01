@@ -1,8 +1,8 @@
 import turtle as trtl
 import random as rand
+import time
 
 # pumpkin
-
 p = trtl.Turtle()
 
 def pumpkin_clicked(x,y):
@@ -25,20 +25,34 @@ p.onclick(pumpkin_clicked)
 
 
 # ghost
-
 g = trtl.Turtle()
 
 def ghost_clicked(x,y):
-  ghost_change_position(x,y)
+  while image_number < 16:
+    ghost_change_position(x,y)
+    cycle_images()
 
 def ghost_change_position(x_value,y_value):
   g.penup()
   g.goto(x_value,y_value)
 
+gif_list = ['frame_00.gif', 'frame_01.gif', 'frame_02.gif', 'frame_03.gif', 'frame_04.gif', 'frame_05.gif', 'frame_06.gif', 'frame_07.gif', 'frame_08.gif', 'frame_09.gif', 'frame_10.gif', 'frame_11.gif', 'frame_12.gif', 'frame_13.gif', 'frame_14.gif', 'frame_15.gif', 'frame_16.gif']
+wn.setup(width=1920,height=1000)
+
+image_number = 0
+def cycle_images():
+
+  image_number = 0
+  while image_number < 16:
+    wn.addshape(gif_list[image_number])
+    g.shape(gif_list[image_number])
+    image_number = image_number + 1
+    time.sleep(.1)
+
 wn = trtl.Screen()
 
-wn.addshape('ghost_1.gif')
-g.shape('ghost_1.gif')
+wn.addshape('ghost.gif')
+g.shape('ghost.gif')
 wn.onclick(ghost_clicked)
 
 wn. bgcolor("black")
