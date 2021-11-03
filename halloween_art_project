@@ -43,11 +43,11 @@ image_number = 0
 def cycle_images():
 
   image_number = 0
-  while image_number < 16:
+  while image_number <= 16:
     wn.addshape(gif_list[image_number])
     g.shape(gif_list[image_number])
     image_number = image_number + 1
-    time.sleep(.1)
+    time.sleep(0.1)
 
 wn = trtl.Screen()
 
